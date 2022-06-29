@@ -16,24 +16,26 @@ class RandomizerTest {
     @Test
     @DisplayName("Array length test")
     public void GetRandomArrayLength(){
-        assertEquals(5, randomizer.makeIntArray(5));
+        int arraySize = 5;
+        int [] testArray = randomizer.makeIntArray(arraySize);
+        assertEquals(testArray.length, arraySize);
     }
     @Test
     @DisplayName("Default string to int test")
     public void StringToIntDefault(){
-        assertEquals(123, randomizer.StringToInt("123"));
+        assertEquals(123, randomizer.stringToInt("123"));
     }
     @Test
     @DisplayName("string with words, numbers and symbols to int")
     public void StringToIntWordAndNumber(){
         //program should ignore non-numerical inputs
-        assertEquals(456,randomizer.StringToInt("4ab5c6.!?"));
+        assertEquals(456,randomizer.stringToInt("4ab5c6.!?"));
     }
     @Test
     @DisplayName("negative value to int test")
     public void NegativeInput(){
         // program should make absolute value
-        assertEquals(5,randomizer.StringToInt("-5"));
+        assertEquals(5,randomizer.stringToInt("-5"));
     }
 
 }
