@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RandomizerTest {
@@ -17,8 +19,8 @@ class RandomizerTest {
     @DisplayName("Array length test")
     public void GetRandomArrayLength(){
         int arraySize = 5;
-        int [] testArray = randomizer.makeIntArray(arraySize);
-        assertEquals(testArray.length, arraySize);
+        List<Integer> testArray = randomizer.makeIntArray(arraySize);
+        assertEquals(testArray.size(), arraySize);
     }
     @Test
     @DisplayName("Default string to int test")

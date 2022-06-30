@@ -1,21 +1,17 @@
 package com.sparta.jeffrey;
 
-public enum SortMethods {
+public enum SortMethodEnum {
     // Update new methods here
     BUBBLESORT ("bubble sort" , 1);
 
-
-
-
     private String sortMethod;
+    private int enumKey;
 
-
-
-    private int sortKey;
-    SortMethods(String sortName , int keyValue){
-        this.sortKey=keyValue;
+    SortMethodEnum(String sortName , int keyValue){
+        this.enumKey=keyValue;
         this.sortMethod=sortName;
     }
+    //----------GETTERS SETTERS----------------
     public void setSortMethod(String sortMethod) {
         this.sortMethod = sortMethod;
     }
@@ -23,10 +19,10 @@ public enum SortMethods {
         return sortMethod;
     }
     public void setSortKey(int sortKey) {
-        this.sortKey = sortKey;
+        this.enumKey = sortKey;
     }
     public int getSortKey() {
-        return sortKey;
+        return enumKey;
     }
 
 }

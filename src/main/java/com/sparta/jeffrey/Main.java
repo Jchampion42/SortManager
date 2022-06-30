@@ -1,5 +1,10 @@
 package com.sparta.jeffrey;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
 /*
 You will be building a program that will allow a user to sort a randomised array.
 The general flow of the application is:
@@ -19,13 +24,75 @@ Suggested Project Phases.
 Phase 1
 Write a program which will take an array of ints and sort it using a bubble sort algorithm.
 Include JUnit tests for this and all subsequent phases (and all subsequent projects for the rest of time)
- */
+Phase 2
+Take two sorted arrays as input and combine them into one sorted array.
+
+
+long start = System.nanoTime();
+        int[] sortedArray = sorter.sortArray(arrayToSort);
+        long end = System.nanoTime();
+        printAfterSort(sortedArray, end-start);
+        */
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Welcome to the array sorting program");
-    for (SortMethods s : SortMethods.values()){
-        System.out.println(s.getSortKey());
+    public static void main(String[] args) throws InterruptedException {
+
+
+
+
+        Randomizer randomizer=new Randomizer();
+        Scanner scanner = new Scanner(System.in);
+        SortMethodEnum sortMethod= SortMethodEnum.BUBBLESORT;
+        boolean userChoosing = true;
+        System.out.println("Welcome to the array sorting program!\n");
+        Thread.sleep(500);
+        System.out.println("In this program we will be sorting an array of integers.\n");
+        Thread.sleep(500);
+        System.out.println("First, select a method to use by typing its number:");
+    for (SortMethodEnum s : SortMethodEnum.values()){
+        System.out.println(s.getSortKey()+ ". " +s.getSortMethod());
     }
+        System.out.println("");
+
+        String userInput = "";
+        int userInputAsInt;
+    while (userChoosing) {
+        userInput = scanner.next();
+        userInputAsInt=randomizer.stringToInt(userInput);
+        for (SortMethodEnum s : SortMethodEnum.values()){
+            if (s.getSortKey()==userInputAsInt){
+                userChoosing=false;
+                sortMethod=s;
+            }
+        }
+        if (userChoosing==true){
+            System.out.println("please check you entered a valid number\n \nPlease enter a number corresponding to a sort method");
+        }
+    }
+        Thread.sleep(500);
+        System.out.println("\nInitializing " + sortMethod.getSortMethod());
+
+        int arrayLength=1;
+        arrayLength=randomizer.getUserArrayLength();
+        List <Integer> listToSort=randomizer.makeIntArray(arrayLength);
+        randomizer.readArray(listToSort);
+        Thread.sleep(1000);
+        System.out.println("Sorting using " + sortMethod.getSortMethod());
+
+        int[] arrayToSort = listToSort.stream().mapToInt(i->i).toArray();
+
+
+        //WHEN NEW METHODS IMPLEMENTED REQUIRED UPDATE HERE--------------
+        BubbleSort bubbleSort=new BubbleSort();
+        Map<SortMethodEnum, Runnable> methodMap = new HashMap<>();
+        methodMap.put(SortMethodEnum.BUBBLESORT,() -> bubbleSort.sortArray(arrayToSort));
+        //---------------------------------------------------------------
+        methodMap.get(sortMethod);
+
+
+
+
+
     }
 
 }

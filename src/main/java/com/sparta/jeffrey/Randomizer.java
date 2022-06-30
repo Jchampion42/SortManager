@@ -1,17 +1,20 @@
 package com.sparta.jeffrey;
 
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Randomizer {
     Randomizer(){
     }
-    public int getUserArrayLength(){
+    public static int getUserArrayLength(){
         boolean userChoosing=true;
         Scanner scanner = new Scanner(System.in);
         int userValue=1;
         while (userChoosing) {
-            System.out.println("Please input a length for your array");
+            System.out.println("Please input a length for the array to sort");
             userValue=stringToInt(scanner.next());
             if (userValue != 0){
                 userChoosing=false;
@@ -20,15 +23,17 @@ public class Randomizer {
         return  userValue;
     }
 
-    public int [] makeIntArray(int arrayLength){
+    public static List<Integer> makeIntArray(int arrayLength){
         Random random= new Random();
-        int[] intArray = new int[arrayLength];
-        for (int i : intArray){
-            i = random.nextInt();
+        Integer[] intArray = new Integer[arrayLength];
+        for (int i =0; i<intArray.length; i++){
+            intArray[i] = i;
+            intArray[i] = (Integer) random.nextInt(100);
         }
-        return intArray;
+        List<Integer> intList = Arrays.asList(intArray);
+        return intList;
     }
-    public int stringToInt(String inputString){
+    public static int stringToInt(String inputString){
         StringBuilder stringBuilder= new StringBuilder(inputString.length());
         stringBuilder.append(0);
         char [] inputAsCharArray = inputString.toCharArray();
@@ -38,14 +43,15 @@ public class Randomizer {
                 stringBuilder.append(c);
             }
         }
-        System.out.println(stringBuilder);
+        // System.out.println(stringBuilder);
         return Integer.parseInt(stringBuilder.toString());
     }
 
-    public <Thing> void readArray(Thing[] array){
+    public static <Thing> void readArray(List<Thing> array){
         System.out.println("The original array layout:");
         for (Thing t : array){
-            System.out.println("" + t);
+            System.out.print(" " + t);
         }
+        System.out.println("");
     }
 }
