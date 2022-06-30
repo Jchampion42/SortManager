@@ -1,4 +1,5 @@
 package com.sparta.jeffrey;
+
 /*
 You will be building a program that will allow a user to sort a randomised array.
 The general flow of the application is:
@@ -21,7 +22,11 @@ Include JUnit tests for this and all subsequent phases (and all subsequent proje
  */
 public class Main {
     public static void main(String[] args) {
-
+        System.out.println("Welcome to the array sorting program");
+    for (SortMethods s : SortMethods.values()){
+        System.out.println(s.getSortKey());
     }
+    }
+
 }
 
