@@ -35,11 +35,6 @@ long start = System.nanoTime();
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-
-
-
-
-        ArrayUtilities arrayUtilities =new ArrayUtilities();
         Scanner scanner = new Scanner(System.in);
         SortMethodEnum sortMethod= SortMethodEnum.BUBBLESORT;
         boolean userChoosing = true;
@@ -51,9 +46,8 @@ public class Main {
     for (SortMethodEnum s : SortMethodEnum.values()){
         System.out.println(s.getSortKey()+ ". " +s.getSortMethod());
     }
-        System.out.println("");
 
-        String userInput = "";
+        String userInput;
         int userInputAsInt;
     while (userChoosing) {
         userInput = scanner.next();
@@ -64,7 +58,7 @@ public class Main {
                 sortMethod=s;
             }
         }
-        if (userChoosing==true){
+        if (userChoosing){
             System.out.println("please check you entered a valid number\n \nPlease enter a number corresponding to a sort method");
         }
     }
@@ -72,12 +66,12 @@ public class Main {
         System.out.println("\nInitializing " + sortMethod.getSortMethod());
         Thread.sleep(750);
 
-        int arrayLength=1;
-        arrayLength= arrayUtilities.getUserArrayLength();
+        int arrayLength;
+        arrayLength= ArrayUtilities.getUserArrayLength();
 
-        List <Integer> listToSort= arrayUtilities.makeRandomIntArray(arrayLength);
+        List <Integer> listToSort= ArrayUtilities.makeRandomIntArray(arrayLength);
         System.out.println("The original array layout:");
-        arrayUtilities.readArray(listToSort);
+        ArrayUtilities.readArray(listToSort);
         Thread.sleep(1000);
         System.out.println("Sorting using " + sortMethod.getSortMethod() + " in ");
         for (int i=3 ;i>0 ; i--){
@@ -86,7 +80,7 @@ public class Main {
         }
         int[] arrayToSort = listToSort.stream().mapToInt(i->i).toArray();
         SortManager sortManager = new SortManager(sortMethod);
-        int[] sortedArray = arrayToSort;
+        int[] sortedArray;
 
         long timerStart=System.nanoTime();
         sortedArray=sortManager.sortArray(arrayToSort);
@@ -97,7 +91,7 @@ public class Main {
         List <Integer> sortedList= Arrays.asList(ArrayUtilities.intArrayToIntegerList(sortedArray));
         System.out.println("The sorted array layout:");
 
-        arrayUtilities.readArray(sortedList);
+        ArrayUtilities.readArray(sortedList);
 
 
 
