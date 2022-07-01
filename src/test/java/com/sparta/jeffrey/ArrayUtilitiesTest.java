@@ -8,36 +8,36 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RandomizerTest {
-    Randomizer randomizer;
+class ArrayUtilitiesTest {
+    ArrayUtilities arrayUtilities;
     @BeforeEach
     public void setup(){
-        randomizer = new Randomizer();
+        arrayUtilities = new ArrayUtilities();
     }
 
     @Test
     @DisplayName("Array length test")
     public void GetRandomArrayLength(){
         int arraySize = 5;
-        List<Integer> testArray = randomizer.makeIntArray(arraySize);
+        List<Integer> testArray = arrayUtilities.makeRandomIntArray(arraySize);
         assertEquals(testArray.size(), arraySize);
     }
     @Test
     @DisplayName("Default string to int test")
     public void StringToIntDefault(){
-        assertEquals(123, randomizer.stringToInt("123"));
+        assertEquals(123, StringConverter.stringToInt("123"));
     }
     @Test
     @DisplayName("string with words, numbers and symbols to int")
     public void StringToIntWordAndNumber(){
         //program should ignore non-numerical inputs
-        assertEquals(456,randomizer.stringToInt("4ab5c6.!?"));
+        assertEquals(456, StringConverter.stringToInt("4ab5c6.!?"));
     }
     @Test
     @DisplayName("negative value to int test")
     public void NegativeInput(){
         // program should make absolute value
-        assertEquals(5,randomizer.stringToInt("-5"));
+        assertEquals(5, StringConverter.stringToInt("-5"));
     }
 
 }

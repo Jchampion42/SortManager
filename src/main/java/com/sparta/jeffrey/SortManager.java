@@ -4,7 +4,7 @@ public class SortManager {
     private Sorter sorter;
 
     public SortManager (SortMethodEnum sortKey){
-        sorter=SortChooser.keyToMethod(sortKey);
+        sorter= PickSortMethod.keyToMethod(sortKey);
     }
     public int [] sortArray (int[] array){
         array=sorter.sortArray(array);
