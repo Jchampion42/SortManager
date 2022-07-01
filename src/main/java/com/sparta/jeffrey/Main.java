@@ -79,16 +79,24 @@ public class Main {
         System.out.println("The original array layout:");
         arrayUtilities.readArray(listToSort);
         Thread.sleep(1000);
-        System.out.println("Sorting using " + sortMethod.getSortMethod());
-
+        System.out.println("Sorting using " + sortMethod.getSortMethod() + " in ");
+        for (int i=3 ;i>0 ; i--){
+            System.out.println(i);
+            Thread.sleep(1000);
+        }
         int[] arrayToSort = listToSort.stream().mapToInt(i->i).toArray();
-
         SortManager sortManager = new SortManager(sortMethod);
         int[] sortedArray = arrayToSort;
+
+        long timerStart=System.nanoTime();
         sortedArray=sortManager.sortArray(arrayToSort);
+        long timerEnd =System.nanoTime();
+        double milisecondTime = (timerEnd-timerStart)/1e6;
+        System.out.println(sortMethod.getSortMethod() + " took " + milisecondTime + " milliseconds to sort the array");
+        Thread.sleep(1000);
         List <Integer> sortedList= Arrays.asList(ArrayUtilities.intArrayToIntegerList(sortedArray));
-        Thread.sleep(3000);
         System.out.println("The sorted array layout:");
+
         arrayUtilities.readArray(sortedList);
 
 
