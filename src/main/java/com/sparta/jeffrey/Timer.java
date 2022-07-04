@@ -6,6 +6,6 @@ public class Timer {
         startTime=System.nanoTime();
     }
     public double getCurrentMilliseconds(){
-        return System.nanoTime()-startTime;
+        return (System.nanoTime()-startTime)/1E6;
     }
 }

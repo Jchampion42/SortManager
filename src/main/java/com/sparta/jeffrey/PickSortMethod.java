@@ -3,6 +3,7 @@ package com.sparta.jeffrey;
 public class PickSortMethod {
     public static Sorter keyToMethod (SortMethodEnum sortKey){
         Sorter targetMethod = null;
+        // UPDATE SWITCH WITH NEW METHODS WHEN ADDED---------------------------------XXXXXXXXX
         switch (sortKey){
             case BUBBLESORT : targetMethod= new BubbleSort(); break;
             default: break;

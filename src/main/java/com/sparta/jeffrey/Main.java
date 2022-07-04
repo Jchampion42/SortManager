@@ -35,7 +35,7 @@ long start = System.nanoTime();
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         // Initialisation of variables---------------------------------------
-        SortMethodEnum sortMethod= SortMethodEnum.BUBBLESORT;
+        SortMethodEnum sortMethod;
 
         System.out.println("Welcome to the array sorting program!\n");
         Thread.sleep(750); // delays to improve user experience
@@ -62,7 +62,7 @@ public class Main {
 
         // readout of initial array -----------------------------------------
         ArrayUtilities.readArray(listToSort);
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         System.out.println("Sorting using " + sortMethod.getSortMethod() + " in ");
         for (int i=3 ;i>0 ; i--){
             System.out.println(i);
