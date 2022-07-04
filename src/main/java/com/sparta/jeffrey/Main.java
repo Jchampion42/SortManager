@@ -2,7 +2,6 @@ package com.sparta.jeffrey;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 /*
 You will be building a program that will allow a user to sort a randomised array.
@@ -35,42 +34,33 @@ long start = System.nanoTime();
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+        // Initialisation of variables---------------------------------------
         SortMethodEnum sortMethod= SortMethodEnum.BUBBLESORT;
-        boolean userChoosing = true;
-        System.out.println("Welcome to the array sorting program!\n");
-        Thread.sleep(750);
-        System.out.println("In this program we will be sorting an array of integers.\n");
-        Thread.sleep(750);
-        System.out.println("First, select a method to use by typing its number:");
-    for (SortMethodEnum s : SortMethodEnum.values()){
-        System.out.println(s.getSortKey()+ ". " +s.getSortMethod());
-    }
 
-        String userInput;
-        int userInputAsInt;
-    while (userChoosing) {
-        userInput = scanner.next();
-        userInputAsInt= StringConverter.stringToInt(userInput);
+        System.out.println("Welcome to the array sorting program!\n");
+        Thread.sleep(750); // delays to improve user experience
+        System.out.println("In this program we will be sorting an array of integers.\n");
+        Thread.sleep(750); // delays to improve user experience
+        System.out.println("First, select a method to use by typing its number:");
         for (SortMethodEnum s : SortMethodEnum.values()){
-            if (s.getSortKey()==userInputAsInt){
-                userChoosing=false;
-                sortMethod=s;
-            }
+            System.out.println(s.getSortKey()+ ". " +s.getSortMethod());
         }
-        if (userChoosing){
-            System.out.println("please check you entered a valid number\n \nPlease enter a number corresponding to a sort method");
-        }
-    }
+
+        //obtain desired sort algorithm--------------------------------------
+        sortMethod=UserChoiceModule.getUserEnum();
+
 
         System.out.println("\nInitializing " + sortMethod.getSortMethod());
         Thread.sleep(750);
 
+        //obtain desired length of array to sort-----------------------------
         int arrayLength;
-        arrayLength= ArrayUtilities.getUserArrayLength();
+        arrayLength= UserChoiceModule.getUserArrayLength();
 
         List <Integer> listToSort= ArrayUtilities.makeRandomIntArray(arrayLength);
         System.out.println("The original array layout:");
+
+        // readout of initial array -----------------------------------------
         ArrayUtilities.readArray(listToSort);
         Thread.sleep(1000);
         System.out.println("Sorting using " + sortMethod.getSortMethod() + " in ");
@@ -78,15 +68,19 @@ public class Main {
             System.out.println(i);
             Thread.sleep(1000);
         }
+        // coverts list to array
         int[] arrayToSort = listToSort.stream().mapToInt(i->i).toArray();
+        // more initialisation
         SortManager sortManager = new SortManager(sortMethod);
         int[] sortedArray;
 
-        long timerStart=System.nanoTime();
+        // sorting of array and timer management------------------------------
+        Timer timer = new Timer();
+        timer.start();
         sortedArray=sortManager.sortArray(arrayToSort);
-        long timerEnd =System.nanoTime();
-        double milisecondTime = (timerEnd-timerStart)/1e6;
-        System.out.println(sortMethod.getSortMethod() + " took " + milisecondTime + " milliseconds to sort the array");
+        double millisecondTime = timer.getCurrentMilliseconds();
+        // output of sorted array--------------------------------------------
+        System.out.println(sortMethod.getSortMethod() + " took " + millisecondTime + " milliseconds to sort the array");
         Thread.sleep(1000);
         List <Integer> sortedList= Arrays.asList(ArrayUtilities.intArrayToIntegerList(sortedArray));
         System.out.println("The sorted array layout:");

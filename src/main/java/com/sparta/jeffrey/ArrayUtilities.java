@@ -4,36 +4,26 @@ package com.sparta.jeffrey;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class ArrayUtilities {
     ArrayUtilities(){
     }
-    public static int getUserArrayLength(){
-        boolean userChoosing=true;
-        Scanner scanner = new Scanner(System.in);
-        int userValue=1;
-        while (userChoosing) {
-            System.out.println("Please input a length for the array to sort");
-            userValue= StringConverter.stringToInt(scanner.next());
-            if (userValue != 0){
-                userChoosing=false;
-            }
-        }
-        return  userValue;
-    }
 
     public static List<Integer> makeRandomIntArray(int arrayLength){
+        // method to create an array with random vales of a length equal to the input
+
         Random random= new Random();
         Integer[] intArray = new Integer[arrayLength];
         for (int i =0; i<intArray.length; i++){
-            intArray[i] = i;
+            intArray[i] = i; //redundancy, program complained when values weren't initialised
             intArray[i] = (Integer) random.nextInt(100);
         }
         List<Integer> intList = Arrays.asList(intArray);
         return intList;
     }
     public static Integer[] intArrayToIntegerList(int [] inputArray){
+        // method to turn an integer array to a list, as the method says
+
         Integer[] integerArray = new Integer[inputArray.length];
         for (int i =0; i<integerArray.length; i++){
             integerArray[i] = inputArray[i];
@@ -42,6 +32,8 @@ public class ArrayUtilities {
     }
 
     public static <Thing> void readArray(List<Thing> array){
+        // generic array for if anything will want to read strings/doubles in the future
+
         for (Thing t : array){
             System.out.print(" " + t);
         }
