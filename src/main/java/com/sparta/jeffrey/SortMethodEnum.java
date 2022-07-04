@@ -2,7 +2,8 @@ package com.sparta.jeffrey;
 
 public enum SortMethodEnum {
     // Update new methods here
-    BUBBLESORT ("bubble sort" , 1);
+    BUBBLESORT ("bubble sort" , 1),
+    MERGESORT ("merge sort",2);
 
     private final String sortMethod;
     private final int enumKey;

@@ -6,6 +6,7 @@ public class PickSortMethod {
         // UPDATE SWITCH WITH NEW METHODS WHEN ADDED---------------------------------XXXXXXXXX
         switch (sortKey){
             case BUBBLESORT : targetMethod= new BubbleSort(); break;
+            case MERGESORT  : targetMethod= new MergeSort();break;
             default: break;
         }
         return targetMethod;
