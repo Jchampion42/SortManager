@@ -1,7 +1,7 @@
 package com.sparta.jeffrey;
 
 public class Timer {
-    long startTime=0;
+    private long startTime=0;
     public void start(){
         startTime=System.nanoTime();
     }

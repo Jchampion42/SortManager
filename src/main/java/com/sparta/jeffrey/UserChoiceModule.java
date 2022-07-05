@@ -12,8 +12,8 @@ public class UserChoiceModule {
 
         while (userChoosing) {
             userInput = scanner.next();
-            userInputAsInt= StringConverter.stringToInt(userInput);
-            for (SortMethodEnum s : SortMethodEnum.values()){
+            userInputAsInt= StringConverter.stringToInt(userInput); // personalised string-to int converter, reads for any ints and always returns positive
+            for (SortMethodEnum s : SortMethodEnum.values()){ // checks through the list of enums to see if the input key matches user input key then returns relevant enum
                 if (s.getSortKey()==userInputAsInt){
                     userChoosing=false;
                     sortMethod=s;
@@ -32,7 +32,7 @@ public class UserChoiceModule {
         int userValue=1;
         while (userChoosing) {
             System.out.println("Please input a length for the array to sort");
-            userValue= StringConverter.stringToInt(scanner.next());
+            userValue= StringConverter.stringToInt(scanner.next()); // uses converter to only return a positive int, and loop refuses a null array.
             if (userValue != 0){
                 userChoosing=false;
             }
