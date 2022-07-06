@@ -83,7 +83,7 @@ public class Main {
         Thread.sleep(750); // delays to improve user experience
         System.out.println("In this program we will be sorting an array of integers.\n");
         Thread.sleep(750); // delays to improve user experience
-        System.out.println("First, select a method to use by typing its number:");
+        System.out.println("Please select a sort method to use by typing its number:");
         for (SortMethodEnum s : SortMethodEnum.values()){ // prints a list to the user of all enums in the list representing the different sort methods
             System.out.println(s.getSortKey()+ ". " +s.getSortMethod());
         }
