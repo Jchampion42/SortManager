@@ -20,15 +20,6 @@ public class ArrayUtilities {
         }
         return intArray;
     }
-    public static Integer[] intArrayToIntegerList(int [] inputArray){
-        // method to turn an integer array to a list, as the method says
-
-        Integer[] integerArray = new Integer[inputArray.length];
-        for (int i =0; i<integerArray.length; i++){
-            integerArray[i] = inputArray[i];
-        }
-        return integerArray;
-    }
 
     public static <Thing> void readArray(List<Thing> array){
         // generic array for if anything will want to read strings/doubles in the future

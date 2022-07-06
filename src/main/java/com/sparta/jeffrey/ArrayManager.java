@@ -18,7 +18,7 @@ public class ArrayManager {
     }
     public void sortArray () throws FetchArrayException {
         if (unsortedIntArray==null){
-            throw new FetchArrayException("A sorted array has not been defined/generated");
+            throw new FetchArrayException("An unsorted array has not been defined/generated");
         }
         sortedIntArray=sorter.sortArray(unsortedIntArray);
     }
@@ -35,9 +35,6 @@ public class ArrayManager {
         return sortedIntArray;
     }
 
-    public void setSortedIntArray(int[] sortedIntArray) {
-        this.sortedIntArray = sortedIntArray;
-    }
     public int[] getUnsortedIntArray() throws FetchArrayException {
         if (unsortedIntArray==null){
             throw new FetchArrayException("An unsorted array has not been defined/generated");
