@@ -1,8 +1,7 @@
 package com.sparta.jeffrey;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /*
 You will be building a program that will allow a user to sort a randomised array.
@@ -75,66 +74,10 @@ List <Integer> sortedList   -like sortedarray, but a list.
         */
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        // Initialisation of variables---------------------------------------
-        SortMethodEnum sortMethod; // establish enum list
-
-        System.out.println("Welcome to the array sorting program!\n");
-        Thread.sleep(750); // delays to improve user experience
-        System.out.println("In this program we will be sorting an array of integers.\n");
-        Thread.sleep(750); // delays to improve user experience
-        System.out.println("Please select a sort method to use by typing its number:");
-        for (SortMethodEnum s : SortMethodEnum.values()){ // prints a list to the user of all enums in the list representing the different sort methods
-            System.out.println(s.getSortKey()+ ". " +s.getSortMethod());
-        }
-
-        //obtain desired sort algorithm--------------------------------------
-        sortMethod=UserChoiceModule.getUserEnum(); // selection module to return an enum for storage related to the list available
-
-        System.out.println("\nInitializing " + sortMethod.getSortMethod());
-        Thread.sleep(750);
-
-        //obtain desired length of array to sort-----------------------------
-        int arrayLength;
-        arrayLength= UserChoiceModule.getUserArrayLength(); // selection module to obtain a length of value 1 or greater
-        System.out.println("Generating array of length" + arrayLength);
-
-        int[] arrayToSort = ArrayUtilities.makeRandomIntArray(arrayLength); //creates an array with random values using the length provided
-        List <Integer> listToSort=new ArrayList<>();
-        for (int i : arrayToSort){
-            listToSort.add(i);
-        }
-
-        System.out.println("The original array layout:");
-
-        // readout of initial array -----------------------------------------
-        ArrayUtilities.readArray(listToSort); // array utilities function to read out an array
-        Thread.sleep(1500);
-        System.out.println("Sorting using " + sortMethod.getSortMethod() + " in ");
-        for (int i=3 ;i>0 ; i--){
-            System.out.println(i);
-            Thread.sleep(1000);
-        }
-        // more initialisation
-        SortManager sortManager = new SortManager(sortMethod);
-        int[] sortedArray;
-
-        // sorting of array and timer management------------------------------
-        Timer timer = new Timer();
-        timer.start();
-        sortedArray=sortManager.sortArray(arrayToSort);
-        double millisecondTime = timer.getCurrentMilliseconds();
-        // output of sorted array--------------------------------------------
-        System.out.println(sortMethod.getSortMethod() + " took " + millisecondTime + " milliseconds to sort the array\n");
-        Thread.sleep(2000);
-        List <Integer> sortedList= Arrays.asList(ArrayUtilities.intArrayToIntegerList(sortedArray));
-        System.out.println("The sorted array layout:");
-
-        ArrayUtilities.readArray(sortedList);
-
-
-
-
+    public static Logger logger = LogManager.getLogger("My Logger");
+    public static void main(String[] args){
+        SortProgram sortProgram=new SortProgram();
+        sortProgram.run();
     }
 
 }

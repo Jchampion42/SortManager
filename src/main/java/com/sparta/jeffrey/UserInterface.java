@@ -28,7 +28,7 @@ public class UserInterface {
     public int getUserArrayLength(){
         int arrayLength;
         arrayLength= UserChoiceModule.getUserArrayLength(); // selection module to obtain a length of value 1 or greater
-        System.out.println("Generating array of length" + arrayLength);
+        System.out.println("Generating array of length " + arrayLength);
         return arrayLength;
     }
     public void readArray(int[] arrayToRead) throws InterruptedException {
