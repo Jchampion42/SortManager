@@ -1,7 +1,7 @@
 package com.sparta.jeffrey;
 
 
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Random;
 
@@ -9,16 +9,16 @@ public class ArrayUtilities {
     ArrayUtilities(){
     }
 
-    public static List<Integer> makeRandomIntArray(int arrayLength){
+    public static int[] makeRandomIntArray(int arrayLength){
         // method to create an array with random vales of a length equal to the input
 
         Random random= new Random();
-        Integer[] intArray = new Integer[arrayLength];
+        int[] intArray = new int[arrayLength];
         for (int i =0; i<intArray.length; i++){
             intArray[i] = i; //redundancy, program complained when values weren't initialised
             intArray[i] = random.nextInt(100);
         }
-        return Arrays.asList(intArray);
+        return intArray;
     }
     public static Integer[] intArrayToIntegerList(int [] inputArray){
         // method to turn an integer array to a list, as the method says

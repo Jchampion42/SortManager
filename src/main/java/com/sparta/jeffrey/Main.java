@@ -1,5 +1,6 @@
 package com.sparta.jeffrey;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,16 +21,16 @@ You are required to test both the functionality of the program and the performan
 
 Suggested Project Phases.
 Phase 1
-Write a program which will take an array of ints and sort it using a bubble sort algorithm.
-Add the option to use a merge sort algorithm instead.
-Include JUnit tests for this and all subsequent phases (and all subsequent projects for the rest of time).
+O Write a program which will take an array of ints and sort it using a bubble sort algorithm.
+O Add the option to use a merge sort algorithm instead.
+O Include JUnit tests for this and all subsequent phases (and all subsequent projects for the rest of time).
 
 Phase 2
-Update your project to use MVC and start to incorporate some of the design principles discussed earlier in the course (OOP, SOLID, design patterns).
-Create classes which implements MVC, including SortManager (controller) and DisplayManager (view) classes.
-The code should include a basic factory pattern to determine which sorter to use.
-Make sure packages are created properly and the structure follows the MVC pattern.
-The code should separate the business logic (sorters) from the display to show MVC in action.
+? Update your project to use MVC and start to incorporate some of the design principles discussed earlier in the course (OOP, SOLID, design patterns).
+? Create classes which implements MVC, including SortManager (controller) and DisplayManager (view) classes.
+O The code should include a basic factory pattern to determine which sorter to use.
+? Make sure packages are created properly and the structure follows the MVC pattern.
+? The code should separate the business logic (sorters) from the display to show MVC in action.
 display - Classes that deal with printing to the console window.
 exceptions - Any custom exceptions which will be thrown.
 sorters - The sort algorithms with Sorter interface for the Factory pattern.
@@ -96,8 +97,14 @@ public class Main {
         //obtain desired length of array to sort-----------------------------
         int arrayLength;
         arrayLength= UserChoiceModule.getUserArrayLength(); // selection module to obtain a length of value 1 or greater
+        System.out.println("Generating array of length" + arrayLength);
 
-        List <Integer> listToSort= ArrayUtilities.makeRandomIntArray(arrayLength); //creates an array with random values using the length provided
+        int[] arrayToSort = ArrayUtilities.makeRandomIntArray(arrayLength); //creates an array with random values using the length provided
+        List <Integer> listToSort=new ArrayList<>();
+        for (int i : arrayToSort){
+            listToSort.add(i);
+        }
+
         System.out.println("The original array layout:");
 
         // readout of initial array -----------------------------------------
@@ -108,8 +115,6 @@ public class Main {
             System.out.println(i);
             Thread.sleep(1000);
         }
-        // coverts list to array
-        int[] arrayToSort = listToSort.stream().mapToInt(i->i).toArray();
         // more initialisation
         SortManager sortManager = new SortManager(sortMethod);
         int[] sortedArray;
@@ -120,8 +125,8 @@ public class Main {
         sortedArray=sortManager.sortArray(arrayToSort);
         double millisecondTime = timer.getCurrentMilliseconds();
         // output of sorted array--------------------------------------------
-        System.out.println(sortMethod.getSortMethod() + " took " + millisecondTime + " milliseconds to sort the array");
-        Thread.sleep(1000);
+        System.out.println(sortMethod.getSortMethod() + " took " + millisecondTime + " milliseconds to sort the array\n");
+        Thread.sleep(2000);
         List <Integer> sortedList= Arrays.asList(ArrayUtilities.intArrayToIntegerList(sortedArray));
         System.out.println("The sorted array layout:");
 

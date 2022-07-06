@@ -1,7 +1,7 @@
 package com.sparta.jeffrey;
 
 public class SortManager {
-    private Sorter sorter;
+    private final Sorter sorter;
 
     public SortManager (SortMethodEnum sortKey){
         sorter= PickSortMethod.keyToMethod(sortKey);
