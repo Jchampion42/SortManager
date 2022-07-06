@@ -20,6 +20,8 @@ public class SortProgram {
         } catch (FetchArrayException e) {
             logger.warn("attempted usage of a null or uninitialised array" + e.getMessage());
             throw new RuntimeException(e);
+        } catch (Exception e){
+            logger.fatal("something went horribly wrong" + e.getMessage());
         }
     }
 }
