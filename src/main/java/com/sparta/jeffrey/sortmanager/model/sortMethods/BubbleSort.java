@@ -1,6 +1,6 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager.model.sortMethods;
 
-public class BubbleSort implements Sorter{
+public class BubbleSort implements Sorter {
 
 
     @Override

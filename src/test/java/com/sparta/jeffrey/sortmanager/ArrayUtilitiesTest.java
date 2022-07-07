@@ -1,5 +1,6 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager;
 
+import com.sparta.jeffrey.sortmanager.model.ArrayUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

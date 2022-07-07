@@ -1,4 +1,4 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager.model.utilities;
 
 public class Timer {
     private long startTime=0;

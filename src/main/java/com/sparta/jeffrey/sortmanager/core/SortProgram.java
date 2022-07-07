@@ -1,11 +1,16 @@
-package com.sparta.jeffrey;
-import static com.sparta.jeffrey.Main.logger;
+package com.sparta.jeffrey.sortmanager.core;
+import com.sparta.jeffrey.sortmanager.controller.SortManager;
+
+import static com.sparta.jeffrey.sortmanager.Main.logger;
 
 public class SortProgram {
     public void run(){
         SortManager sortManager= new SortManager();
         try {
+
             sortManager.startProgram();
+            int [] warmup= new int[1000000];
+            warmup=null;
             logger.info("program initialised");
             sortManager.getUserSortMethod();
             logger.info("user sort method step executed");

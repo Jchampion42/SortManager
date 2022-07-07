@@ -1,4 +1,6 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager.view;
+
+import com.sparta.jeffrey.sortmanager.core.SortMethodEnum;
 
 import java.util.Scanner;
 

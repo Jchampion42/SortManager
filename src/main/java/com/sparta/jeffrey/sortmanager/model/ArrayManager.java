@@ -1,4 +1,8 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager.model;
+
+import com.sparta.jeffrey.sortmanager.core.FetchArrayException;
+import com.sparta.jeffrey.sortmanager.core.SortMethodEnum;
+import com.sparta.jeffrey.sortmanager.model.sortMethods.Sorter;
 
 public class ArrayManager {
 
@@ -8,7 +12,7 @@ public class ArrayManager {
 
     private SortMethodEnum sortMethod;
 
-    private  Sorter sorter;
+    private Sorter sorter;
     public void createRandomArray(int arrayLength){
         unsortedIntArray = ArrayUtilities.makeRandomIntArray(arrayLength);
         sortedIntArray=null;

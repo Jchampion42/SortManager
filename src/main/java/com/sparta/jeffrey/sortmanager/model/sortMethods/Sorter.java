@@ -1,4 +1,4 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager.model.sortMethods;
 
 public interface Sorter {
 

@@ -1,4 +1,7 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager.view;
+
+import com.sparta.jeffrey.sortmanager.model.ArrayUtilities;
+import com.sparta.jeffrey.sortmanager.core.SortMethodEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +21,9 @@ public class UserInterface {
             System.out.println(s.getSortKey()+ ". " +s.getSortMethod());
         }
 
-        sortMethod=UserChoiceModule.getUserEnum(); // selection module to return an enum for storage related to the list available
+        sortMethod= UserChoiceModule.getUserEnum(); // selection module to return an enum for storage related to the list available
 
-        System.out.println("\nMethodselected: " + sortMethod.getSortMethod());
+        System.out.println("\nMethod selected: " + sortMethod.getSortMethod());
         Thread.sleep(750);
         return  sortMethod;
     }

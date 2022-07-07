@@ -1,4 +1,9 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager.controller;
+
+import com.sparta.jeffrey.sortmanager.core.FetchArrayException;
+import com.sparta.jeffrey.sortmanager.model.utilities.Timer;
+import com.sparta.jeffrey.sortmanager.model.ArrayManager;
+import com.sparta.jeffrey.sortmanager.view.UserInterface;
 
 public class SortManager {
     ArrayManager arrayManager=new ArrayManager();

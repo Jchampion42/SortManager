@@ -1,5 +1,6 @@
-package com.sparta.jeffrey;
+package com.sparta.jeffrey.sortmanager;
 
+import com.sparta.jeffrey.sortmanager.core.SortProgram;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
