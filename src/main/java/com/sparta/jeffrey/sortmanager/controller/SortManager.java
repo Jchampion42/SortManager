@@ -21,11 +21,9 @@ public class SortManager {
     }
     public void sortArray() throws FetchArrayException, InterruptedException {
         userInterface.sortCountdown(arrayManager.getSortMethod());
-        Timer timer=new Timer();
         arrayManager.createSortMethod();
-        timer.start();
         arrayManager.sortArray();
-        userInterface.displaySortTime(timer.getCurrentMilliseconds(),arrayManager.getSortMethod());
+        userInterface.displaySortTime(arrayManager.getTimeTaken(),arrayManager.getSortMethod());
         userInterface.readArray(arrayManager.getSortedIntArray());
     }
 }

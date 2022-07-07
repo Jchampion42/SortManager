@@ -3,6 +3,7 @@ package com.sparta.jeffrey.sortmanager.model;
 import com.sparta.jeffrey.sortmanager.core.FetchArrayException;
 import com.sparta.jeffrey.sortmanager.core.SortMethodEnum;
 import com.sparta.jeffrey.sortmanager.model.sortMethods.Sorter;
+import com.sparta.jeffrey.sortmanager.model.utilities.Timer;
 
 public class ArrayManager {
 
@@ -13,6 +14,8 @@ public class ArrayManager {
     private SortMethodEnum sortMethod;
 
     private Sorter sorter;
+
+    private double timeTaken;
     public void createRandomArray(int arrayLength){
         unsortedIntArray = ArrayUtilities.makeRandomIntArray(arrayLength);
         sortedIntArray=null;
@@ -21,10 +24,13 @@ public class ArrayManager {
         sorter= PickSortMethod.keyToMethod(sortMethod);
     }
     public void sortArray () throws FetchArrayException {
+        Timer timer=new Timer();
         if (unsortedIntArray==null){
             throw new FetchArrayException("An unsorted array has not been defined/generated");
         }
+        timer.start();
         sortedIntArray=sorter.sortArray(unsortedIntArray);
+        timeTaken=timer.getCurrentMilliseconds();
     }
 
 
@@ -37,6 +43,10 @@ public class ArrayManager {
             throw new FetchArrayException("A sorted array has not been defined/generated");
         }
         return sortedIntArray;
+
+    }
+    public double getTimeTaken() {
+        return timeTaken;
     }
 
     public int[] getUnsortedIntArray() throws FetchArrayException {
