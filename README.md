@@ -2,7 +2,7 @@
 ## An application to test the efficiency of different implementations of sort methods in java
 
 
-##The task specifications
+## The task specifications
 ### You will be building a program that will allow a user to sort a randomised array.
 **The general flow of the application is:**
  * The user is presented with a number of sort algorithms to choose from.
