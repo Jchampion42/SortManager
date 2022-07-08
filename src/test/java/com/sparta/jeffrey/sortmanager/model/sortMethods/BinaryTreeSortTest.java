@@ -1,7 +1,6 @@
-package com.sparta.jeffrey.sortmanager;
+package com.sparta.jeffrey.sortmanager.model.sortMethods;
 
 import com.sparta.jeffrey.sortmanager.model.sortMethods.BinaryTreeSort;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +24,7 @@ class BinaryTreeSortTest {
     }
     @Test public void nullContentTest2(){
         int[] nullArray = new int[10];
-        Exception exception=assertThrows(NullPointerException.class,()->{treeSort.sortArray(nullArray);});
+        assertThrows(NullPointerException.class,()->{treeSort.sortArray(nullArray);});
     }
     @Test public void nullArray(){
         int [] nullArray=null;

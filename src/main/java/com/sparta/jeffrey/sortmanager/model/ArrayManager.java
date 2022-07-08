@@ -3,14 +3,12 @@ package com.sparta.jeffrey.sortmanager.model;
 import com.sparta.jeffrey.sortmanager.core.ArrayUtilities;
 import com.sparta.jeffrey.sortmanager.core.FetchArrayException;
 import com.sparta.jeffrey.sortmanager.core.SortMethodEnum;
-import com.sparta.jeffrey.sortmanager.model.sortMethods.BinaryTreeSort;
-import com.sparta.jeffrey.sortmanager.model.sortMethods.BubbleSort;
-import com.sparta.jeffrey.sortmanager.model.sortMethods.MergeSort;
-import com.sparta.jeffrey.sortmanager.model.sortMethods.Sorter;
+import com.sparta.jeffrey.sortmanager.model.sortMethods.*;
 import com.sparta.jeffrey.sortmanager.model.utilities.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
+import static com.sparta.jeffrey.sortmanager.Main.logger;
 
 public class ArrayManager {
 
@@ -26,9 +24,11 @@ public class ArrayManager {
     public void createRandomArray(int arrayLength){
         unsortedIntArray = ArrayUtilities.makeRandomIntArray(arrayLength);
         sortedIntArray=null;
+        logger.info("array created in array management");
     }
     public void createSortMethod(){
         sorter= PickSortMethod.keyToMethod(sortMethod);
+        logger.info("method selected in array management");
     }
     public void sortArray () throws FetchArrayException {
 
@@ -54,11 +54,14 @@ public class ArrayManager {
         }
         else sortCount=1;
         timeTaken=0;
+        logger.info("commencing sort operation in array management");
+        logger.debug("array size sent to sort: " + unsortedIntArray.length + " sort iterations to perform: " + sortCount);
         for (int i=0; i<sortCount; i++) {
             timer.start();
             sortedIntArray = sorter.sortArray(unsortedIntArray);
             timeTaken += timer.getCurrentMilliseconds();
         }
+        logger.info("sort operation completed");
         timeTaken=timeTaken/sortCount;
     }
 
@@ -115,11 +118,13 @@ public class ArrayManager {
     public static class PickSortMethod {
         public static Sorter keyToMethod (SortMethodEnum sortKey){
             Sorter targetMethod;
-            // UPDATE SWITCH WITH NEW METHODS WHEN ADDED---------------------------------XXXXXXXXX
+            // UPDATE SWITCH WITH NEW METHODS WHEN ADDED---------------------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
             targetMethod = switch (sortKey){
                 case BUBBLESORT     : yield  new BubbleSort();
                 case MERGESORT      : yield  new MergeSort();
                 case BINARYTREESORT : yield  new BinaryTreeSort();
+                case INSERTIONSORT  : yield  new InsertionSort();
+                case SELECTIONSORT  : yield  new SelectionSort();
             };
             return targetMethod;
         }

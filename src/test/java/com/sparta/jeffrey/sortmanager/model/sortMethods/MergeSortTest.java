@@ -1,4 +1,4 @@
-package com.sparta.jeffrey.sortmanager;
+package com.sparta.jeffrey.sortmanager.model.sortMethods;
 
 import com.sparta.jeffrey.sortmanager.model.sortMethods.MergeSort;
 import org.junit.jupiter.api.Test;

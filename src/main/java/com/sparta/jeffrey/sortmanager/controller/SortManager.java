@@ -16,23 +16,23 @@ public class SortManager {
             arrayManager.setSortMethod(userInterface.getUserMethod());
     }
     public void generateUserArray() throws FetchArrayException, InterruptedException {
-        arrayManager.createRandomArray(userInterface.getUserArrayLength());
-        userInterface.readArray(arrayManager.getUnsortedIntArray());
+        arrayManager.createRandomArray(userInterface.getUserArrayLength()); //creation of array in array manager
+        userInterface.readArray(arrayManager.getUnsortedIntArray()); // passing of array back to viewer
     }
     public void sortArray() throws FetchArrayException, InterruptedException {
-        userInterface.sortCountdown(arrayManager.getSortMethod());
-        arrayManager.createSortMethod();
-        arrayManager.sortArray();
-        userInterface.displaySortTime(arrayManager.getTimeTaken(),arrayManager.getSortMethod());
-        userInterface.readArray(arrayManager.getSortedIntArray());
-        arrayManager.addToMethodList();
-        arrayManager.addToTimeList();
-        arrayManager.addToArrayList();
+        userInterface.sortCountdown(arrayManager.getSortMethod()); // 3..2..1..
+        arrayManager.createSortMethod(); // initialise sort to use
+        arrayManager.sortArray();   // perform sort
+        userInterface.displaySortTime(arrayManager.getTimeTaken(),arrayManager.getSortMethod()); // passes method and time to view
+        userInterface.readArray(arrayManager.getSortedIntArray());// pass sorted array to viewer to read
+        arrayManager.addToMethodList(); // commit method for leaderboard
+        arrayManager.addToTimeList();   // commit time for leaderboard
+        arrayManager.addToArrayList();  // commit array length for leaderboard
     }
     public boolean repeat() {
         return userInterface.repeatCheck();
     }
     public void callLeaderboards(){
-        userInterface.historyCheck(arrayManager.getTimeList(),arrayManager.getMethodList(),arrayManager.getArrayList());
+        userInterface.historyCheck(arrayManager.getTimeList(),arrayManager.getMethodList(),arrayManager.getArrayList()); // gets current list of stored values for leaderboard
     }
 }

@@ -4,7 +4,9 @@ public enum SortMethodEnum {
     // Update new methods here
     BUBBLESORT ("bubble sort" , 1),
     MERGESORT ("merge sort",2),
-    BINARYTREESORT ("binary tree", 3);
+    BINARYTREESORT ("binary tree", 3),
+    INSERTIONSORT ("insertion sort", 4),
+    SELECTIONSORT ("selection sort", 5);
 
     private final String sortMethod;
     private final int enumKey;

@@ -62,11 +62,6 @@ A link to your completed project should be emailed to your trainers by 23:59 on 
 
 Test areas:
 x   -useful readme
-~   -have you got Junit tests
-~   -OOP-encapsulation polymorphism etc            NEEDS CHECKING
-~   -violated solid principles?                 NEEDS CHECKING
-~   -logging
-~   -range of log levels
 x   -extra algorithms
 
 

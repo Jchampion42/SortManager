@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import static com.sparta.jeffrey.sortmanager.Main.logger;
 public class UserInterface {
     public void intro() throws InterruptedException {
         System.out.println("Welcome to the array sorting program!\n");
@@ -23,6 +24,7 @@ public class UserInterface {
         }
 
         sortMethod= UserChoiceModule.getUserEnum(); // selection module to return an enum for storage related to the list available
+        logger.debug("enum value returned from user interface: " + sortMethod);
 
         System.out.println("\nMethod selected: " + sortMethod.getSortMethod());
         Thread.sleep(750);
@@ -71,6 +73,7 @@ public class UserInterface {
         Integer longestValue= lengthList.get(0);
         Double fastestValue= timeList.get(0);
         for (int i=0 ; i<sortMethodList.size(); i++){
+            // these first three if statements evaluate the best of each stat
 
             if (timeList.get(i)<=fastestValue){
                 fastestPosition=i;
@@ -80,7 +83,7 @@ public class UserInterface {
                 longestValue=lengthList.get(i);
                 longestPosition=i;
             }
-            scoreList.add(Math.pow(lengthList.get(i),0.8)/timeList.get(i)); // modify score values here
+            scoreList.add(Math.pow(lengthList.get(i),0.8)/timeList.get(i)); // modify score values here--------------------------
             if (scoreList.get(i)>bestScoreValue){
                 bestScoreValue=scoreList.get(i);
                 bestScorePosition=i;
