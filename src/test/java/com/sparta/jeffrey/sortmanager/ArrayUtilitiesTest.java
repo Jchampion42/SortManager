@@ -1,6 +1,6 @@
 package com.sparta.jeffrey.sortmanager;
 
-import com.sparta.jeffrey.sortmanager.model.ArrayManager;
+import com.sparta.jeffrey.sortmanager.core.ArrayUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,9 +15,9 @@ class ArrayUtilitiesTest {
 
     @Test
     @DisplayName("Array length test")
-    public void GetRandomArrayLength(){
+    public void getRandomArrayLength(){
         int arraySize = 5;
-        int[] testArray = ArrayManager.ArrayUtilities.makeRandomIntArray(arraySize);
+        int[] testArray = ArrayUtilities.makeRandomIntArray(arraySize);
         assertEquals(testArray.length, arraySize);
     }
 

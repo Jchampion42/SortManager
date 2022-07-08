@@ -1,15 +1,12 @@
 package com.sparta.jeffrey.sortmanager.view;
 
-import com.sparta.jeffrey.sortmanager.model.ArrayManager;
 import com.sparta.jeffrey.sortmanager.core.SortMethodEnum;
+import com.sparta.jeffrey.sortmanager.core.ArrayUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-
-import static com.sparta.jeffrey.sortmanager.Main.logger;
-
 public class UserInterface {
     public void intro() throws InterruptedException {
         System.out.println("Welcome to the array sorting program!\n");
@@ -45,7 +42,7 @@ public class UserInterface {
 
         System.out.println("Array layout:");
 
-        ArrayManager.ArrayUtilities.readArray(listToSort); // array utilities function to read out an array
+        ArrayUtilities.readArray(listToSort); // array utilities function to read out an array
         Thread.sleep(1500);
     }
     public void sortCountdown(SortMethodEnum sortMethod) throws InterruptedException {
@@ -56,7 +53,7 @@ public class UserInterface {
         }
     }
     public void displaySortTime(double time, SortMethodEnum sortMethod) throws InterruptedException {
-        System.out.println(sortMethod.getSortMethod() + " took " + time + " milliseconds on average to sort the array\n");
+        System.out.println(sortMethod.getSortMethod() + " took " + Math.floor(time*10000)/10000 + " milliseconds on average to sort the array\n");
         Thread.sleep(2000);
     }
     public boolean repeatCheck(){
@@ -64,8 +61,9 @@ public class UserInterface {
     }
     public void historyCheck(List<Double> timeList,List<SortMethodEnum> sortMethodList,  List<Integer> lengthList){
         System.out.println("\n \n__________________LEADER BOARDS___________________");
-        System.out.println("\n your score will be rated by length^2 / time taken!!\n");
+        System.out.println("\n your score will be rated by length^0.8 / time taken!!\n");
         List <Double> scoreList = new ArrayList<>();
+
         int longestPosition=-1;
         int fastestPosition=-1;
         int bestScorePosition=-1;
@@ -73,6 +71,7 @@ public class UserInterface {
         Integer longestValue= lengthList.get(0);
         Double fastestValue= timeList.get(0);
         for (int i=0 ; i<sortMethodList.size(); i++){
+
             if (timeList.get(i)<=fastestValue){
                 fastestPosition=i;
                 fastestValue=timeList.get(i);
@@ -81,7 +80,7 @@ public class UserInterface {
                 longestValue=lengthList.get(i);
                 longestPosition=i;
             }
-            scoreList.add(Math.pow(lengthList.get(i),2)/timeList.get(i));
+            scoreList.add(Math.pow(lengthList.get(i),0.8)/timeList.get(i)); // modify score values here
             if (scoreList.get(i)>bestScoreValue){
                 bestScoreValue=scoreList.get(i);
                 bestScorePosition=i;
@@ -93,16 +92,17 @@ public class UserInterface {
             if (i == longestPosition) {
                 System.out.print(" **CURRENT BEST** ");
             }
-            System.out.print("\tTime: " + timeList.get(i));
+            System.out.print("\tTime: " + Math.floor(timeList.get(i) * 10000) / 10000 + " milliseconds");
             if (i == fastestPosition){
                 System.out.print(" **CURRENT BEST** ");
             }
-            System.out.print("\t Score: "+ scoreList.get(i));
+            System.out.print("\t Score: "+ Math.floor(scoreList.get(i) * 100) / 100);
             if (i == bestScorePosition){
                 System.out.print(" **CURRENT BEST** ");
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public static class UserChoiceModule {
@@ -145,25 +145,17 @@ public class UserInterface {
 
         public static boolean repeatSorter(){
             Scanner scanner= new Scanner(System.in);
-            boolean userChoosing=true;
-            String userInput=null;
-            try {
-                while (userChoosing) {
+            boolean returnValue=false;
+            String userInput;
+                ValueGot:while (true) {
                     System.out.println("Would you like to select another sorting algorithm? (Y or N)");
                     userInput = scanner.next().toLowerCase(Locale.ROOT);
                     switch (userInput) {
-                        case "y":
-                            return true;
-                        case "n":
-                            return false;
+                        case "y":   returnValue=true;      break ValueGot;
+                        case "n":   break ValueGot;
                     }
                 }
-                throw new Exception();
-            }
-            catch (Exception e){
-                logger.warn("user escaped repeated choice loop" +e.getMessage());
-            }
-            return false;
+            return returnValue;
         }
     }
 

@@ -60,17 +60,15 @@ If you want to keep your repo private, add your trainer as a collaborator and em
 A link to your completed project should be emailed to your trainers by 23:59 on 2022-07-10.
 
 
+Test areas:
+x   -useful readme
+~   -have you got Junit tests
+~   -OOP-encapsulation polymorphism etc            NEEDS CHECKING
+~   -violated solid principles?                 NEEDS CHECKING
+~   -logging
+~   -range of log levels
+x   -extra algorithms
 
-
-ALL VARIABLE IN MAIN
-SortMethodEnum sortMethod   - an enum pointer, initialised by the user, then used as a reference to the sort algorithm
-int arrayLength             - a number received by the user to indicate a desired length
-List <Integer> listToSort   - a list generated from int array length
-SortManager sortManager     - an instance of the sort manager class
-int[] arrayToSort           - like list to sort, but an array
-int[] sortedArray           - a location to store the sorted array
-millisecondTime             - a place to store timer information as soon as possible
-List <Integer> sortedList   -like sortedarray, but a list.
 
         */
 

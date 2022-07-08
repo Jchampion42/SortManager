@@ -1,5 +1,6 @@
 package com.sparta.jeffrey.sortmanager.model;
 
+import com.sparta.jeffrey.sortmanager.core.ArrayUtilities;
 import com.sparta.jeffrey.sortmanager.core.FetchArrayException;
 import com.sparta.jeffrey.sortmanager.core.SortMethodEnum;
 import com.sparta.jeffrey.sortmanager.model.sortMethods.BinaryTreeSort;
@@ -10,7 +11,6 @@ import com.sparta.jeffrey.sortmanager.model.utilities.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class ArrayManager {
 
@@ -20,9 +20,9 @@ public class ArrayManager {
     private SortMethodEnum sortMethod;
     private Sorter sorter;
     private double timeTaken;
-    private final List<Integer> arrayList= new ArrayList<>();
-    private final List<SortMethodEnum> methodList=new ArrayList<>();
-    private final List<Double> timeList = new ArrayList<>();
+    private List<Integer> arrayList= new ArrayList<>();
+    private List<SortMethodEnum> methodList=new ArrayList<>();
+    private List<Double> timeList = new ArrayList<>();
     public void createRandomArray(int arrayLength){
         unsortedIntArray = ArrayUtilities.makeRandomIntArray(arrayLength);
         sortedIntArray=null;
@@ -109,32 +109,6 @@ public class ArrayManager {
     }
     public void addToArrayList(){
         arrayList.add(unsortedIntArray.length);
-    }
-
-    public static class ArrayUtilities {
-        ArrayUtilities(){
-        }
-
-        public static int[] makeRandomIntArray(int arrayLength){
-            // method to create an array with random vales of a length equal to the input
-
-            Random random= new Random();
-            int[] intArray = new int[arrayLength];
-            for (int i =0; i<intArray.length; i++){
-                intArray[i] = i; //redundancy, program complained when values weren't initialised
-                intArray[i] = random.nextInt(arrayLength*4);
-            }
-            return intArray;
-        }
-
-        public static <Thing> void readArray(List<Thing> array){
-            // generic array for if anything will want to read strings/doubles in the future
-
-            for (Thing t : array){
-                System.out.print(" " + t);
-            }
-            System.out.println();
-        }
     }
 
     // THIS FILE NEEDS UPDATING WITH NEW IMPLEMENTATIONS

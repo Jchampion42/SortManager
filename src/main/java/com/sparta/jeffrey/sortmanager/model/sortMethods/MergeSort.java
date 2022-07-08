@@ -4,7 +4,7 @@ public class MergeSort implements Sorter {
 
     @Override
     public int[] sortArray(int[] arrayToSort) {
-        if (arrayToSort.length==1)return arrayToSort;
+        if (arrayToSort.length<=1)return arrayToSort;
         int[] arrayLeft=new int[arrayToSort.length/2];
         int[] arrayRight= new int[arrayToSort.length-arrayLeft.length];
         int i=0;
