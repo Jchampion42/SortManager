@@ -15,7 +15,7 @@
  * The sorted array after the algorithm has been executed
  * The time taken
 
-**ou are required to test both the functionality of the program and the performance of the algorithms (speed tests)*
+*you are required to test both the functionality of the program and the performance of the algorithms (speed tests)*
 
 ### Suggested Project Phases.
 #### Phase 1
@@ -71,5 +71,59 @@ start - Factory pattern for sorters, loader for run logic and Java main method.
 **Assumption** allowing the user to select multiple algorithms means that throughout the programs exectution they may select any algorithm and length to sort and test it on a new randomly generated array
 *implementation* Storage of information that regards to the sort desired, and display of a leaderboard containing the history of any sort algorithms used
 
+### sorting algorithms
+#### Bubble sort
+A method that iterates over the array, swapping two elements if the second element is smaller
+![Bubble picture](https://www.productplan.com/uploads/bubble-sort-1024x683-2.png)
+
+##### Key code
+```
+        int tempNum;
+        for (int i=0 ; i< arrayToSort.length -1 ; i++){
+            for (int j = 0 ; j<arrayToSort.length -1 ; j++){
+                if(arrayToSort[j]>arrayToSort[j+1]){
+                    tempNum=arrayToSort[j+1];
+                    arrayToSort[j+1]=arrayToSort[j];
+                    arrayToSort[j]=tempNum;
+                }
+            }
+        }
+```
+#### Merge sort
+A method that splits the array into arrays of one, then merges them together, creating a small, but sorted array. it can then merge larger sorted arrays until it creates one large sorted array.
+![merge picture](https://upload.wikimedia.org/wikipedia/commons/e/e6/Merge_sort_algorithm_diagram.svg)
+
+##### key code
+To use merge sort effectively the code utililises recursion.
+**steps**
+1. check if the array is equal to 1, if so finish the method
+2. otherwise, split the array into two
+3. move contents from original array to new arrays
+4. call for the left side to be sorted, repeating all steps so far
+5. call for the right to be sorted. repeating all steps
+6. use a function to merge
+
+the practicality means that it will never try to merge until both left and right sides equal to 1 in size or are deemed already sorted
+```
+ public int[] sortArray(int[] arrayToSort) {
+        if (arrayToSort.length<=1)return arrayToSort;
+        int[] arrayLeft=new int[arrayToSort.length/2]; 
+        int[] arrayRight= new int[arrayToSort.length-arrayLeft.length];
+        int i=0;
+        while (i<arrayLeft.length){
+            arrayLeft[i]=arrayToSort[i];
+            i++;
+        }
+        int j=0;
+        while (j<arrayRight.length){
+            arrayRight[j]=arrayToSort[i];
+            j++;
+            i++;
+        }
+        int[] sortedLeft = sortArray(arrayLeft);
+        int[] sortedRight = sortArray(arrayRight);
+        return  mergeTwoSortedArrays(sortedLeft,sortedRight);
+        }
+```
 
 
