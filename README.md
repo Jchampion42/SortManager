@@ -15,7 +15,7 @@
  * The sorted array after the algorithm has been executed
  * The time taken
 
-**You are required to test both the functionality of the program and the performance of the algorithms (speed tests)
+**ou are required to test both the functionality of the program and the performance of the algorithms (speed tests)*
 
 ### Suggested Project Phases.
 #### Phase 1
