@@ -18,7 +18,6 @@ public class BinaryTreeSort implements Sorter {
         private Node leftNode = null;
         private Node rightNode = null;
         private int copyCount = 0;
-        private int countUpToCopy=0;
         private List<Integer> treeValueLayout = new ArrayList<>();
         Tree(int[] inputArray){
             int maxValue = inputArray[0];
@@ -77,9 +76,6 @@ public class BinaryTreeSort implements Sorter {
         Node rightNode;
         int copyCount;
 
-        boolean gotOwnValue=false;
-
-
         Node(int value){
             this.value=value;
             copyCount=1;
@@ -101,6 +97,5 @@ public class BinaryTreeSort implements Sorter {
                 copyCount++;
             }
         }
-
     }
 }

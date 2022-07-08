@@ -25,5 +25,14 @@ public class SortManager {
         arrayManager.sortArray();
         userInterface.displaySortTime(arrayManager.getTimeTaken(),arrayManager.getSortMethod());
         userInterface.readArray(arrayManager.getSortedIntArray());
+        arrayManager.addToMethodList();
+        arrayManager.addToTimeList();
+        arrayManager.addToArrayList();
+    }
+    public boolean repeat() {
+        return userInterface.repeatCheck();
+    }
+    public void callLeaderboards(){
+        userInterface.historyCheck(arrayManager.getTimeList(),arrayManager.getMethodList(),arrayManager.getArrayList());
     }
 }

@@ -9,8 +9,6 @@ public class SortProgram {
         try {
 
             sortManager.startProgram();
-            int [] warmup= new int[1000000];
-            warmup=null;
             logger.info("program initialised");
             sortManager.getUserSortMethod();
             logger.info("user sort method step executed");
@@ -18,12 +16,26 @@ public class SortProgram {
             logger.info("generate array step completed");
             sortManager.sortArray();
             logger.info("sort array step completed");
+            sortManager.callLeaderboards();
+            boolean repeatCheck=sortManager.repeat();
+            while (repeatCheck){
+                logger.info("Looping as per repeatCheck\n\n");
+                sortManager.getUserSortMethod();
+                logger.info("user sort method step executed");
+                sortManager.generateUserArray();
+                logger.info("generate array step completed");
+                sortManager.sortArray();
+                logger.info("sort array step completed");
+                sortManager.callLeaderboards();
+                repeatCheck=sortManager.repeat();
+            }
+            logger.info("Program exited successfully\n\n");
         }
         catch (InterruptedException e) {
             logger.error("program was interrupted" + e.getMessage());
             throw new RuntimeException(e);
         } catch (FetchArrayException e) {
-            logger.warn("attempted usage of a null or uninitialised array" + e.getMessage());
+            logger.error("attempted usage of a null or uninitialised array" + e.getMessage());
             throw new RuntimeException(e);
         } catch (Exception e){
             logger.fatal("something went horribly wrong" + e.getMessage());
