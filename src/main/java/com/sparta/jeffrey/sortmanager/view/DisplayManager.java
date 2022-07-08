@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import static com.sparta.jeffrey.sortmanager.Main.logger;
-public class UserInterface {
+public class DisplayManager {
     public void intro() throws InterruptedException {
         System.out.println("Welcome to the array sorting program!\n");
         Thread.sleep(750); // delays to improve user experience
