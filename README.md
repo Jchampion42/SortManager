@@ -74,6 +74,7 @@ start - Factory pattern for sorters, loader for run logic and Java main method.
 ### sorting algorithms
 #### Bubble sort
 A method that iterates over the array, swapping two elements if the second element is smaller
+
 ![Bubble picture](https://www.productplan.com/uploads/bubble-sort-1024x683-2.png)
 
 ##### Key code
@@ -91,6 +92,7 @@ A method that iterates over the array, swapping two elements if the second eleme
 ```
 #### Merge sort
 A method that splits the array into arrays of one, then merges them together, creating a small, but sorted array. it can then merge larger sorted arrays until it creates one large sorted array.
+
 ![merge picture](https://upload.wikimedia.org/wikipedia/commons/e/e6/Merge_sort_algorithm_diagram.svg)
 
 ##### key code
@@ -129,7 +131,8 @@ the practicality means that it will never try to merge until both left and right
 #### binary tree
 Whilst not a traditional sort method, a binary tree can be used as one. Upon being passed a number it will evaluate if the number is higher or lower than the node it is at. if lower, it will pass to the node below, which will do the same with its value. If no node is found at any point a new node is instead generated with the value passed.
 to use this as a sorting algorithm, a recursive method to move through the tree from lowest to highest can be used.
-![binary tree image](https://en.wikipedia.org/wiki/Binary_search_tree#/media/File:Binary_search_tree.svg)
+
+![binary tree image](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/1200px-Binary_search_tree.svg.png)
 
 ##### key code
 This code is the code required for creation of a node. When used as a constructor the node sinply holds its value with a count of 1 time. if the create node function is called, it will evaluate the value passed against its own. it either using the left to create a node with the value as a constructor or passing to the left's function to evaluate. It will also do the same for the right. If it so happen that the number is a copy, the node will instead keep the number, adding to its personal count to be counted later.
@@ -162,10 +165,11 @@ class Node{
             }
         }
     }
-    ```
+```
     
 #### Insertion sort
 This is a sort method that is simple to grasp mentally as it is one we all use in daily life. it 'picks' the next value in the chain, and places it where it needs to be within the sorted code
+
 ![Insertion picture](https://media.geeksforgeeks.org/wp-content/uploads/insertionsort.png)
 
 ##### key code
@@ -182,7 +186,6 @@ for(int i=0;i<arrayToSort.length;++i){
             }
         }
 ```
-
 #### Selection sort
 selection sort works by finding the location of the minimum value, and then swapping the value to the next mark of the array, slowly finding and fetching the smallest value
 
