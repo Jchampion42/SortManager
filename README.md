@@ -126,4 +126,83 @@ the practicality means that it will never try to merge until both left and right
         }
 ```
 
+#### binary tree
+Whilst not a traditional sort method, a binary tree can be used as one. Upon being passed a number it will evaluate if the number is higher or lower than the node it is at. if lower, it will pass to the node below, which will do the same with its value. If no node is found at any point a new node is instead generated with the value passed.
+to use this as a sorting algorithm, a recursive method to move through the tree from lowest to highest can be used.
+![binary tree image](https://en.wikipedia.org/wiki/Binary_search_tree#/media/File:Binary_search_tree.svg)
+
+##### key code
+This code is the code required for creation of a node. When used as a constructor the node sinply holds its value with a count of 1 time. if the create node function is called, it will evaluate the value passed against its own. it either using the left to create a node with the value as a constructor or passing to the left's function to evaluate. It will also do the same for the right. If it so happen that the number is a copy, the node will instead keep the number, adding to its personal count to be counted later.
+```
+class Node{
+        Integer value;
+        Node leftNode;
+        Node rightNode;
+        int copyCount;
+
+        Node(int value){
+            this.value=value;
+            copyCount=1;
+        }
+        void createNode(int value){
+            if (value<this.value){
+                if (leftNode!=null){
+                    leftNode.createNode(value);
+                }
+                else leftNode=new Node(value);
+            }
+            if (value>this.value){
+                if (rightNode!=null){
+                    rightNode.createNode(value);
+                }
+                else rightNode=new Node(value);
+            }
+            if (value==this.value){
+                copyCount++;
+            }
+        }
+    }
+    ```
+    
+#### Insertion sort
+This is a sort method that is simple to grasp mentally as it is one we all use in daily life. it 'picks' the next value in the chain, and places it where it needs to be within the sorted code
+![Insertion picture](https://media.geeksforgeeks.org/wp-content/uploads/insertionsort.png)
+
+##### key code
+```
+for(int i=0;i<arrayToSort.length;++i){
+            int j = i;
+            while(j > 0 && arrayToSort[j-1]>arrayToSort[j]){
+
+                int temp = arrayToSort[j];
+                arrayToSort[j] = arrayToSort[j-1];
+                arrayToSort[j-1] = temp;
+                j = j-1;
+
+            }
+        }
+```
+
+#### Selection sort
+selection sort works by finding the location of the minimum value, and then swapping the value to the next mark of the array, slowly finding and fetching the smallest value
+
+![Selection picture](https://cdn.programiz.com/cdn/farfuture/VPGtdVYag2vfHBotOaFEiYLqvWAD_Jwfnwur_AtKQHo/mtime:1582112622/sites/tutorial2program/files/Selection-sort-0.png)
+
+##### key code
+```
+int n = arrayToSort.length;
+            for (int i = 0; i < n-1; i++)
+            {
+                int minLocation = i;
+                for (int j = i+1; j < n; j++)
+                    if (arrayToSort[j] < arrayToSort[minLocation])
+                        minLocation = j;
+
+                // swap minimum element with compared element
+                int temp = arrayToSort[minLocation];
+                arrayToSort[minLocation] = arrayToSort[i];
+                arrayToSort[i] = temp;
+            }
+            return arrayToSort;
+```
 
