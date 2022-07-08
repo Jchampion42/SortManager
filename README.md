@@ -4,18 +4,18 @@
 
 ##The task specifications
 ### You will be building a program that will allow a user to sort a randomised array.
-#### The general flow of the application is:
+**The general flow of the application is:**
  * The user is presented with a number of sort algorithms to choose from.
  * Decision is given via the command line (using Scanner).
  * The program will then ask for the length of an array again via the command line.
 
-#### The program should then output:
+**The program should then output:**
  * The unsorted randomly generated array
  * The sort algorithm to be used
  * The sorted array after the algorithm has been executed
  * The time taken
 
-#### You are required to test both the functionality of the program and the performance of the algorithms (speed tests)
+**You are required to test both the functionality of the program and the performance of the algorithms (speed tests)
 
 ### Suggested Project Phases.
 #### Phase 1
@@ -63,6 +63,7 @@ start - Factory pattern for sorters, loader for run logic and Java main method.
 #### phase 2
 **Assumption: ** the requirement of an MVC pertains to three distinct classes for data storage and manipulation (model) , user interaction (view) and linking the two previous (controller)
 *Implementation* three primary classes, ArrayManager (model), DisplayManager(view) and SortManager(controller)
+
 **Assumption: ** including a factory pattern to determine which sorter to use pertains to the usage of a factory within the process of getting a sort method
 *Implementation* Enumbers were created to act as keys and links of information which are repeatedly referenced throughout the project to initialise any sort method
 
